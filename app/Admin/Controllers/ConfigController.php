@@ -7,6 +7,8 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
+use Encore\Admin\Widgets\Table;
+use Psy\Util\Str;
 
 class ConfigController extends AdminController
 {
@@ -15,7 +17,7 @@ class ConfigController extends AdminController
      *
      * @var string
      */
-    protected $title = 'App\Modes\Configs';
+    protected $title = '配置管理';
 
     /**
      * Make a grid builder.
@@ -65,9 +67,13 @@ class ConfigController extends AdminController
     {
         $form = new Form(new Configs);
 
-        $form->text('key', __('Key'));
-        $form->textarea('value', __('Value'));
-        $form->text('comment', __('Comment'));
+        $form->text('key', __('Key'))->required();
+        $form->text('value', __('Value'))->required();
+        $form->text('comment', __('Comment'))->required();
+
+        $form->saving(function (Form $form) {
+            $form->key = \Illuminate\Support\Str::upper($form->key);
+        });
 
         return $form;
     }
