@@ -30,10 +30,22 @@ class UserController extends AdminController
     {
         $grid = new Grid(new User());
 
+        // 过滤
+        // $grid->expandFilter();
+        $grid->filter(function ($filter) {
+            $filter->disableIdFilter();
+            $filter->column(1 / 4, function ($filter) {
+                $filter->like('name', __('admin.name'));
+            });
+        });
+
+        // 新增操作
+
+
         $grid->column('id', __('Id'));
         $grid->column('name', __('admin.name'));
         $grid->column('email', __('admin.email'));
-        $grid->column('avatar', __('admin.avatar'))->image('',50,50);
+        $grid->column('avatar', __('admin.avatar'))->image('', 50, 50);
         $grid->column('mobile', __('admin.mobile'))->replace([0 => '未设置']);
         $grid->column('gender', __('admin.gender'))->using([0 => '保密', 1 => '男', 2 => '女']);
         $grid->column('status', __('admin.status'))->using([0 => '已删除', 1 => '正常', 2 => '禁用']);
