@@ -93,7 +93,7 @@ class UserController extends AdminController
         $form->image('avatar', __('admin.avatar'));
         $form->text('mobile', __('admin.mobile'))->pattern('[1][3,4,5,7,8,9][0-9]{9}');
         $form->select('gender', __('admin.gender'))->default(0)->options([0 => '保密', 1 => '男', 2 => '女']);
-        $form->text('joinip', __('admin.joinip'));
+        $form->ip('joinip', __('admin.joinip'));
         $form->select('status', __('admin.status'))->default(1)->options([0 => '删除', 1 => '正常', 2 => '禁用']);
 
         $form->saving(function (Form $form) {
