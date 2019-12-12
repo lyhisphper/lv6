@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="0049d1cd-a235-46e9-8ee4-094fc330e5a0" name="192.168.1.200" url="http://192.168.1.200">
-        <fileTransfer host="192.168.1.200" port="22" rootFolder="/data/wwwroot/lv6" accessType="SFTP">
+      <webServer id="0049d1cd-a235-46e9-8ee4-094fc330e5a0" name="192.168.1.200" url="http://47.100.101.79">
+        <fileTransfer host="47.100.101.79" port="22" rootFolder="/usr/local/nginx/html/lv6" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>

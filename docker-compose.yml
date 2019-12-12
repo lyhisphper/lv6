@@ -1,0 +1,45 @@
+version: '3.5'
+services:
+  nginx:
+    image: nginx
+    container_name: nginx-lv6
+    environment:
+      - APP_ENV=dev
+      - TIMEZONE=Asia/Shanghai
+    restart: always
+    depends_on:
+      - laravel
+    ports:
+      - "51080:80"
+      - "51443:443"
+    volumes:
+      - ./:/usr/share/nginx/html/lv6
+      - ./nginx/:/etc/nginx/conf.d
+    command: [nginx-debug, '-g', 'daemon off;']
+  laravel:
+    image: bricre/php-fpm
+    container_name: laravel-lv6
+    # environment:
+    restart: always
+    volumes:
+      - ./:/var/www/html/lv6
+    # ports:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-lv6
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+    ports:
+      - "54306:3306"
+      #volumes:
+      # - ./runtime/data/mysql:/var/lib/mysql
+    restart: always
+  redis:
+    container_name: redis-lv6
+    image: redis:4-alpine
+    ports:
+      - "57379:6379"
+    sysctls:
+      net.core.somaxconn: 65535
+    restart: always
