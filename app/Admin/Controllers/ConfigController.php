@@ -6,6 +6,7 @@ use App\Modes\Configs;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
+use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
 use Encore\Admin\Widgets\Table;
 use Psy\Util\Str;
@@ -32,8 +33,8 @@ class ConfigController extends AdminController
         $grid->column('key', __('Key'));
         $grid->column('value', __('Value'));
         $grid->column('comment', __('Comment'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        $grid->column('created_at', __('Created at'))->hide();
+        $grid->column('updated_at', __('Updated at'))->hide();
 
         return $grid;
     }
@@ -77,4 +78,6 @@ class ConfigController extends AdminController
 
         return $form;
     }
+
+
 }

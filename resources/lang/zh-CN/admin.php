@@ -108,4 +108,9 @@ return [
     'prev'                   => '上一步',
     'next'                   => '下一步',
     'quick_create'           => '快速创建',
+    'config'                 => [
+        'key'                   =>'Key',
+        'value'                 =>'参数',
+        'comment'               =>'备注'
+    ]
 ];

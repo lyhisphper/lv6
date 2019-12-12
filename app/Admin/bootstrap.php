@@ -18,4 +18,8 @@
  *
  */
 
+use Encore\Admin\Form;
+
 Encore\Admin\Form::forget(['map', 'editor']);
+
+Form::extend('strAndArr', \App\Admin\Extensions\Field\StrAndArr::class);
